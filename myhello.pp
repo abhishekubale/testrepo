@@ -27,16 +27,22 @@
 #    #content => template("/etc/ssh/sshd_config.bak")
 #  }
   # add user, create homedir and set a password
-  user { 'finch1':
-    ensure     => present,
-    comment    => 'H Finch',
-    home    => '/home/finch1',
-    managehome => true,
-    uid => 9001,
-  }
-
-ssh_authorized_key { 'key' :
-  user => 'finch1',
-  type => 'ssh-rsa',
-  key => 'akldjafsadfsf',
+#  user { 'finch1':
+#    ensure     => present,
+#    comment    => 'H Finch',
+#    home    => '/home/finch1',
+#    managehome => true,
+#    uid => 9001,
+#  }
+#
+#ssh_authorized_key { 'key' :
+#  user => 'finch1',
+#  type => 'ssh-rsa',
+#  key => 'akldjafsadfsf',
+#}
+$files = ['/home/vagrant/test1','/home/vagrant/test2','/home/vagrant/test3']
+$files.each |$f| {
+     file { $f:
+       ensure => present
+     }
 }
